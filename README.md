@@ -2,7 +2,7 @@
 
 - 비트컴퓨터 교육장의 주변에 있는 식당에서 밥을 먹다 학우들과 식당의 정보들을 공유하면 좋겠다는 생각에 프로그램을 만들기로 했습니다.
 
-![hamburger](/image/hamburger.png)
+![hamburger](/image/hamburger(300).png)
 
 # 팀원
 
