@@ -40,10 +40,10 @@ public class TerminalIO extends IOClass {
     }
 
     @Override
-    public int getInt() {
+    public int getInt(String show) {
         while (true) {
             try {
-                System.out.print("Input number : ");
+                System.out.print("-> Input "+ show + " : ");
                 int input = in.nextInt();
                 in.nextLine();
                 return input;
@@ -54,10 +54,11 @@ public class TerminalIO extends IOClass {
     }
 
     @Override
-    public String getStr() {
+    public String getStr(String show) {
         String str;
         while (true) {
-            System.out.print("if you want to quit? input quit");
+            System.out.println("if you want to quit? input quit");
+            System.out.println("-> Input "+ show + " : ");
             str = in.nextLine();
             if (str.equals("quit")) {
                 System.out.println("cancel");

@@ -10,7 +10,7 @@ public abstract class IOClass {
 
     public abstract void close();
 
-    public abstract String getStr();
+    public abstract int getInt(String str);
 
-    public abstract int getInt();
+    public abstract String getStr(String show);
 }

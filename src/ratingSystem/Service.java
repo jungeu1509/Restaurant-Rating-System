@@ -1,5 +1,6 @@
 package ratingSystem;
 
+import java.util.ArrayList;
 import ratingSystem.DTO.RestaurantDTO;
 import ratingSystem.IO.IOClass;
 import ratingSystem.Repository.FileRepository;
@@ -14,45 +15,54 @@ public class Service {
         this.io = io;
     }
 
-    public void close() {
-        // TODO Auto-generated method stub
-
-    }
-
     public void showAll() {
-        // TODO Auto-generated method stub
-
+//        ArrayList<String> dtoArray = repository.showAllByIndex();
+        ArrayList<String> dtoArray = repository.showAllByRate();
+        if(dtoArray.size() == 0) {
+            io.println2User("there is no data");
+            return;
+        }
+        io.println2User("index/name/menu/price/createdAt/updatedAt");
+        for(int i = 0; i < dtoArray.size(); i++) {
+            io.println2User(dtoArray.get(i));
+        }
     }
 
     public void search() {
-        // TODO Auto-generated method stub
-        String name = io.getStr();
+        String name = io.getStr("name");
         if (checkEmpty(name)) {
-            io.println2User("Please input name longer");
+            io.println2User("cancel");
             return;
+        }
+
+        ArrayList<String> ret = repository.searchByName(name);
+        if(ret.size() == 0) {
+            io.println2User("No data please try again");
+        } else {
+            io.println2User("index/name/menu/price/createdAt/updatedAt");
+            for(int i = 0; i < ret.size(); i++) {
+                io.println2User(ret.get(i));
+            }
         }
     }
 
     public void create() {
-        io.print2User("input name : ");
-        String name = io.getStr();
+        String name = io.getStr("name");
 		if (checkEmpty(name)) {
+            io.println2User("cancel");
 			return;
 		}
-
-        io.print2User("input menu : ");
-        String menu = io.getStr();
+        String menu = io.getStr("menu");
 		if (checkEmpty(menu)) {
+            io.println2User("cancel");
 			return;
 		}
+        Integer price = io.getInt("price");
+        Integer rate = io.getInt("rate");
 
-        io.print2User("input price : ");
-        Integer price = io.getInt();
-
-        io.print2User("input rate : ");
-        Integer rate = io.getInt();
         RestaurantDTO dto = new RestaurantDTO(name, menu, price, rate);
-        String ret = repository.save(dto);
+
+        String ret = repository.create(dto);
         if (checkEmpty(ret)) {
             io.println2User("create fail");
         } else {
@@ -62,13 +72,54 @@ public class Service {
     }
 
     public void update() {
-        // TODO Auto-generated method stub
+        Long index = (long) io.getInt("index");
+        if(index <= 0) {
+            io.println2User("Wrong input please try again");
+            return;
+        }
 
+        String name;
+        String menu;
+        int price;
+        int rate;
+
+        name = io.getStr("name");
+        if (checkEmpty(name)) {
+            io.println2User("cancel");
+            return;
+        }
+
+        menu = io.getStr("menu");
+        if (checkEmpty(menu)) {
+            io.println2User("cancel");
+            return;
+        }
+        price = io.getInt("price");
+        rate = io.getInt("rate");
+        if(rate < 0 || rate > 10) {
+            io.println2User("Out of order. please input 0 ~ 10");
+        }
+
+        String ret = repository.update(index, name, menu, price, rate);
+        if (checkEmpty(ret)) {
+            io.println2User("update fail");
+        } else {
+            io.println2User("update success");
+            io.println2User(ret);
+        }
     }
 
     public void delete() {
-        // TODO Auto-generated method stub
-
+        int index = io.getInt("index");
+        if(index <= 0) {
+            io.println2User("Wrong input please try again");
+            return;
+        }
+        if(repository.delete((long) index) == index) {
+            io.println2User("delete success");
+        } else {
+            io.println2User("delete fail. please check your data");
+        }
     }
 
     private boolean checkEmpty(String str) {

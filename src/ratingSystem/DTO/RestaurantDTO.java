@@ -73,7 +73,7 @@ public class RestaurantDTO {
         return updatedAt;
     }
 
-    public String toString(char regex) {
+    public String toString(String regex) {
         String str = "";
         str += index.toString() + regex;
         str += name + regex;

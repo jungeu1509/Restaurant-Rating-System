@@ -30,7 +30,7 @@ public class MainClass {
             // select menu
             int main;
             while (true) {
-                main = io.getInt();
+                main = io.getInt("main menu number");
 				if (main > 0 && main <= maxMenu) {
 					break;
 				}
@@ -69,8 +69,6 @@ public class MainClass {
     }
 
     static void close() throws IOException {
-        service.close();
-        io.close();
         repository.close();
     }
 
