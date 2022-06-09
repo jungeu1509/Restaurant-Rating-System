@@ -1,4 +1,4 @@
-package ratingSystem.DTO;
+package ratingSystem.Compare;
 
 import java.util.Comparator;
 import ratingSystem.DTO.RestaurantDTO;
