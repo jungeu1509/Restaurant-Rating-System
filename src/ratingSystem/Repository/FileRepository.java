@@ -10,11 +10,9 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.time.LocalDate;
 import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Comparator;
-import ratingSystem.DTO.IndexCompare;
-import ratingSystem.DTO.NameCompare;
-import ratingSystem.DTO.RateCompare;
+import ratingSystem.Compare.IndexCompare;
+import ratingSystem.Compare.NameCompare;
+import ratingSystem.Compare.RateCompare;
 import ratingSystem.DTO.RestaurantDTO;
 
 public class FileRepository {
