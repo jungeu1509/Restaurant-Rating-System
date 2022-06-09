@@ -22,7 +22,7 @@ public class Service {
             io.println2User("there is no data");
             return;
         }
-        io.println2User("index/name/menu/price/createdAt/updatedAt");
+        io.println2User("index/name/menu/price/rate/createdAt/updatedAt");
         for(int i = 0; i < dtoArray.size(); i++) {
             io.println2User(dtoArray.get(i));
         }
@@ -31,7 +31,6 @@ public class Service {
     public void search() {
         String name = io.getStr("name");
         if (checkEmpty(name)) {
-            io.println2User("cancel");
             return;
         }
 
@@ -39,7 +38,7 @@ public class Service {
         if(ret.size() == 0) {
             io.println2User("No data please try again");
         } else {
-            io.println2User("index/name/menu/price/createdAt/updatedAt");
+            io.println2User("index/name/menu/price/rate/createdAt/updatedAt");
             for(int i = 0; i < ret.size(); i++) {
                 io.println2User(ret.get(i));
             }
@@ -49,12 +48,10 @@ public class Service {
     public void create() {
         String name = io.getStr("name");
 		if (checkEmpty(name)) {
-            io.println2User("cancel");
 			return;
 		}
         String menu = io.getStr("menu");
 		if (checkEmpty(menu)) {
-            io.println2User("cancel");
 			return;
 		}
         Integer price = io.getInt("price");
@@ -85,13 +82,11 @@ public class Service {
 
         name = io.getStr("name");
         if (checkEmpty(name)) {
-            io.println2User("cancel");
             return;
         }
 
         menu = io.getStr("menu");
         if (checkEmpty(menu)) {
-            io.println2User("cancel");
             return;
         }
         price = io.getInt("price");

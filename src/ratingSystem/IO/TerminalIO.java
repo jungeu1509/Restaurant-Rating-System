@@ -48,7 +48,7 @@ public class TerminalIO extends IOClass {
                 in.nextLine();
                 return input;
             } catch (Exception e) {
-                System.out.println("Error Occured! Please try again. : " + e);
+                System.out.println("Error Occurred! Please try again. : " + e);
             }
         }
     }
