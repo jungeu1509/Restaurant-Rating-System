@@ -38,27 +38,17 @@ public class MainClass {
             }
 
             switch (main) {
-                case 1: { // 1. Show all Restaurant
-                    service.showAll();
-                    break;
-                }
-                case 2: { // 2. Search Restaurant
-                    service.search();
-                    break;
-                }
-                case 3: { // 3. Create Restaurant
-                    service.create();
-                    break;
-                }
-                case 4: { // 4. Modify Restaurant
-                    service.update();
-                    break;
-                }
-                case 5: { // 5. Delete Restaurant
-                    service.delete();
-                    break;
-                }
-                case maxMenu: {
+                // 1. Show all Restaurant
+                case 1 -> service.showAll();
+                // 2. Search Restaurant
+                case 2 -> service.search();
+                // 3. Create Restaurant
+                case 3 -> service.create();
+                // 4. Modify Restaurant
+                case 4 -> service.update();
+                // 5. Delete Restaurant
+                case 5 -> service.delete();
+                case maxMenu -> {
                     io.println2User("Auto Saved");
                     close();
                     io.println2User("Program over. Have a nice meal~!");
